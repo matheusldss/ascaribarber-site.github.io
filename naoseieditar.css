@@ -1,10 +1,10 @@
 /* Estilizando a barra de rolagem */
 ::-webkit-scrollbar {
-    width: 5px;
-}
+    width: 4px;
+} 
 
 ::-webkit-scrollbar-track {
-    background: var(--cor-principal);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

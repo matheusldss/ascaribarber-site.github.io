@@ -8,6 +8,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: text;
+
 }
 
 :root {
@@ -69,12 +71,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #3d4143;
 }
 
 .botao-agendeseuhorario a {
     text-decoration: none;
-    color: #3d4143;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,9 +85,9 @@ body {
 .botao-agendeseuhorario span {
     position: relative;
     font-family: var(--font-pequena);
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
-    color: #3d4143;
+    color: var(--color-gray1);
 }
 
 .botao-agendeseuhorario:before {
@@ -129,7 +129,7 @@ body {
 
 .botao-agendeseuhorario:hover svg {
     transform: translateX(0);
-    stroke: #3d4143;
+    stroke: var(--color-gray1);
 }
 
 /* Menu */
@@ -253,6 +253,7 @@ body {
     padding: 2rem 1rem;
     z-index: 1;
     overflow: visible;
+    margin-bottom: 15px;
 }
 
 .container-sobre {
@@ -362,7 +363,7 @@ body {
     display: flex;
     justify-content: space-between;
     text-decoration: none;
-    color: var(--color-gray2);
+    color: var(--color-gray1);
     font-size: 1.5rem;
     width: 100%;
     padding-bottom: 5px;
@@ -425,7 +426,15 @@ body {
 }
 
 /*Tabela-serviços*/
-
+.servicos-titulo{
+    text-align: center;
+    font-family: var(--font-grande);
+    font-weight: lighter;
+    font-size: 5rem;;
+    border-bottom:  1px solid var(--color-destaque);
+    margin-bottom: 20px;
+    
+}
 #servicos {
     max-width: 800px;
     margin: 0px auto;
@@ -457,16 +466,19 @@ body {
 }
 
 .servico-preco {
-    font-size: 18px;
+    font-size: 22px;
     color: var(--color-destaque);
-    font-weight: bolder; 
+    font-weight: bolder;
+    text-shadow: 1px 1px 0px var(--color-gray1);
 }
 
 /*localização*/
 #localizacao {
-    width: 90%;
+    width: 100%;
     height: 400px;
     margin: 0 auto;
+    text-shadow: 1px 1px 10px var(--color-destaque);
+    background-color: var(--color-destaque);
 }
 
 #localizacao iframe {
@@ -484,20 +496,34 @@ body {
     left: 50%;
     position: relative;
 }
-
-.localizacao-Rua {
+.localizacao-titulo{
     text-align: center;
     font-family: var(--font-grande);
     font-weight: lighter;
     font-size: 6rem;
     letter-spacing: 0.05rem;
-    color: var(--color-gray2);
+    color: var(--color-gray1); 
+    margin: 10px 10px 10px 10px;  
+}
+.localizacao-Rua {
+    text-align: center;
+    font-family: var(--font-grande);
+    font-weight: lighter;
+    font-size: 3rem;
+    letter-spacing: 0.05rem;
+    color: var(--color-gray1);    
+    margin-top: 10rem;
+    margin-bottom: 1rem;
 }
 
-/* Formulário */
-#section .contato{
-    color: var(--color-destaque);
+.localizacao-hr{
+    border-color: var(--color-gray2);
+    margin: 0 auto;
+    width: 480px;
+    height: 1px;
 }
+/* Formulário */
+
 #formulario {
     width: 50%;
     margin: 40px auto;
@@ -516,7 +542,7 @@ body {
 #formulario input,
 #formulario textarea {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -525,7 +551,7 @@ body {
 #formulario button[type="submit"] {
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -550,7 +576,7 @@ input#nome {
 }
 
 #formulario .linha input {
-    width: 45%;
+    width: 50%;
 }
 
 .contato-titulo {
@@ -559,10 +585,17 @@ input#nome {
     font-weight: lighter;
     font-size: 6rem;
     letter-spacing: 0.05rem;
-    margin-top: 1rem;
+    margin-top: 5rem;
     color: var(--color-gray2);
+    
 }
 
+.contato-hr {
+    border-color: var(--color-destaque);
+    margin: 0 auto;
+    width: 480px;
+    height: 2px;
+}
 /*footer*/
 .footer {
     background-color: var(--color-gray1);
