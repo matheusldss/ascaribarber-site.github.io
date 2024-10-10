@@ -1,0 +1,657 @@
+/******************** Fontes usadas */
+@import url('naoseieditar.css');
+@import url('https://fonts.cdnfonts.com/css/tt-hoves-pro-trial');
+@import url('clash-grotesk.css');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-grande: 'TT Hoves Pro Trial', sans-serif;
+    --font-pequena: 'ClashGrotesk-Light', sans-serif;
+    --cor-principal: #520305;
+    --color-gray1: #3d4143;
+    --color-gray2: #9c9d9d;
+    --color-white: #f6f6f6;
+    --color-destaque: #D9C6B0;
+    --cor-degrade:
+}
+
+
+body {
+    background-color: #330109;
+    width: 100vw;
+    display: block;
+    font-family: var(--font-pequena);
+    overflow-x: hidden;
+}
+
+.header {
+    user-select: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2.2rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 99;
+    transition: top 0.3s ease-in-out;
+    background-color: var(--color-gray1);
+    border-radius: 2px;
+}
+
+
+.logo img {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    width: 240px;
+    /* ajuste conforme o tamanho do seu logo */
+}
+
+/* Botão Agende seu Horário */
+
+.botao-agendeseuhorario {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3d4143;
+}
+
+.botao-agendeseuhorario a {
+    text-decoration: none;
+    color: #3d4143;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.botao-agendeseuhorario span {
+    position: relative;
+    font-family: var(--font-pequena);
+    font-size: 18px;
+    font-weight: 700;
+    color: #3d4143;
+}
+
+.botao-agendeseuhorario:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    border-radius: 50px;
+    background: var(--color-destaque);
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.botao-agendeseuhorario:hover:before {
+    width: 90%;
+    background: var(--color-destaque);
+}
+
+.botao-agendeseuhorario:active {
+    transform: scale(0.95);
+}
+
+.botao-agendeseuhorario svg {
+    position: relative;
+    top: 1px;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--color-destaque);
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+
+.botao-agendeseuhorario:hover svg {
+    transform: translateX(0);
+    stroke: #3d4143;
+}
+
+/* Menu */
+.menu-aberto {
+    background-color: var(--cor-principal);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: 98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.menu-aberto.active {
+    height: 100vh;
+    opacity: 1;
+}
+
+.nav-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.nav-menu a {
+    user-select: none;
+    text-decoration: none;
+    color: var(--color-white);
+    font-family: var(--font-pequena);
+    font-size: 3rem;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.menu-aberto.active .nav-menu a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-menu a:hover {
+    color: var(--color-gray2);
+    transition: all 0.3s ease;
+}
+
+.inicio {
+    width: 100%;
+    height: 100vh;
+    padding: 0rem 1rem;
+    z-index: 1;
+    user-select: none;
+}
+
+.container-inicio {
+    width: 100%;
+    height: 100%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+
+.capa {
+    width: 100vw;
+    height: 100vw;
+    color: var(--color-white);
+    text-align: center;
+}
+
+.destaque-inicio {
+    font-family: var(--font-grande);
+    font-weight: lighter;
+    text-align: center;
+    font-size: 6rem;
+    letter-spacing: 0.05rem;
+}
+
+.paragrafo-inicio {
+    text-align: center;
+    /* Isso já está certo */
+    margin: 20px auto;
+    /* Isso centraliza o parágrafo verticalmente, se estiver dentro de um container flex */
+    max-width: 950px;
+    /* Mantenha para limitar a largura */
+    font-weight: lighter;
+}
+
+.paragrafo-inicio p {
+    font-size: clamp(1.2rem, 1.5vw + 1rem, 2rem);
+    color: var(--color-gray2);
+    font-family: var(--font-pequena);
+    font-weight: 100;
+    text-align: center;
+    /* Isso garante que o texto do parágrafo também esteja centralizado */
+    margin: 0;
+    /* Removendo margens para garantir centralização perfeita */
+}
+
+.sobre {
+    background-color: var(--color-destaque);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    z-index: 1;
+    overflow: visible;
+}
+
+.container-sobre {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headline-sobre {
+    height: 30%;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.headline-scroll {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+    width: 2000px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.headline-scroll span {
+    font-family: var(--font-grande);
+    font-size: 5rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.headline-scroll .divisor {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-gray1);
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.headline-scroll .bold {
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.headline-scroll .light {
+    font-weight: lighter;
+    color: var(--color-gray2);
+}
+
+.conteudo-sobre {
+    position: relative;
+    top: 30%;
+    width: 100%;
+    height: 70%;
+    display: flex;
+}
+
+.left-sobre {
+    color: var(--color-white);
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 3rem;
+}
+
+.textos-sobre h1 {
+    font-size: 3rem;
+    font-family: var(--font-grande);
+}
+
+.textos-sobre p {
+    font-size: 1.5rem;
+    color: var(--color-gray2);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 1.5px;
+}
+
+.redes-sociais {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.redes-sociais a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--color-gray2);
+    font-size: 1.5rem;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-gray1);
+}
+
+.right-sobre {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-sobre {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: absolute;
+    width: 70%;
+    z-index: 99;
+}
+
+.complemento-sobre {
+    width: auto;
+    z-index: 0;
+}
+
+.complemento-sobre img {
+    position: relative;
+    left: 20%;
+    top: 1%;
+    width: 75%;
+    z-index: 1000;
+    animation: rotate 20s linear infinite;
+}
+
+.complemento-sobre-navalha img {
+    position: relative;
+    left: 25%;
+    top: 100%;
+    width: 60%;
+    z-index: -1000;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.imagem-sobre img {
+    width: 90%;
+    z-index: 99;
+}
+
+/*Tabela-serviços*/
+
+#servicos {
+    max-width: 800px;
+    margin: 0px auto;
+    padding: 20px;
+    background-color: var(--color-gray2);
+    box-shadow: rgb(0 0 0 / 70%) 0px 0px 10px 0px;
+    border-radius: 20px;
+}
+
+.servicos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.servicos li {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.servicos li:last-child {
+    border-bottom: none;
+}
+
+.servico-nome {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.servico-preco {
+    font-size: 18px;
+    color: var(--color-destaque);
+    font-weight: bolder; 
+}
+
+/*localização*/
+#localizacao {
+    width: 90%;
+    height: 400px;
+    margin: 0 auto;
+}
+
+#localizacao iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#localizacao iframe {
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
+}
+
+.localizacao-Rua {
+    text-align: center;
+    font-family: var(--font-grande);
+    font-weight: lighter;
+    font-size: 6rem;
+    letter-spacing: 0.05rem;
+    color: var(--color-gray2);
+}
+
+/* Formulário */
+#section .contato{
+    color: var(--color-destaque);
+}
+#formulario {
+    width: 50%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+#formulario label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#formulario input,
+#formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#formulario button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formulario button[type="submit"]:hover {
+    background-color: #555;
+}
+
+#formulario .linha {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+}
+
+input#nome {
+    margin-right: 15px;
+}
+
+#formulario .linha label {
+    margin-right: 10px;
+}
+
+#formulario .linha input {
+    width: 45%;
+}
+
+.contato-titulo {
+    text-align: center;
+    font-family: var(--font-grande);
+    font-weight: lighter;
+    font-size: 6rem;
+    letter-spacing: 0.05rem;
+    margin-top: 1rem;
+    color: var(--color-gray2);
+}
+
+/*footer*/
+.footer {
+    background-color: var(--color-gray1);
+    width: 100%;
+    padding: 3rem 1rem;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.container-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.footer-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-column img {
+    width: 200px;
+    margin-left: -150px;
+}
+
+.menu-column {
+    text-align: center;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--cor-principal);
+}
+
+.social-column {
+    text-align: right;
+}
+
+.social-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.social-links a i {
+    margin-right: 0.5rem;
+}
+
+.social-links a:hover {
+    color: var(--color-destaque);
+}
+
+.credits-column {
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.credits-column p {
+    margin: 0.2rem 0;
+}
