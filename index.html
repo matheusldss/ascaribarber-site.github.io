@@ -56,40 +56,41 @@
       <nav class="nav-menu">
         <a href="#inicio">INÍCIO</a>
         <a href="#sobre">SOBRE</a>
-        <a href="#cortes">CORTES</a>
+        <a href="#servicos">SERVIÇOS</a>
         <a href="#contato">CONTATO</a>
       </nav>
     </div>
   </header>
 
   <!-- Conteúdo principal -->
-  <main id="inicio" class="inicio">
-    <div class="container-inicio">
-      <div id="capa" data-aos="fade-up" data-aos-duration="1000">
-        <h1 class="destaque-inicio">Renovação & Autoestima</h1>
-        <div class="paragrafo-inicio" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione deserunt laboriosam eum nisi
-            delectus ab ad expedita! Earum.</p>
+  <section>
+    <main id="inicio" class="inicio">
+      <div class="container-inicio">
+        <div id="capa" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="destaque-inicio">Renovação & Autoestima</h1>
+          <div class="paragrafo-inicio" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione deserunt laboriosam eum nisi
+              delectus ab ad expedita! Earum.</p>
+          </div>
+          <button class="botao-agendeseuhorario" data-aos="fade-up" data-aos-delay="600" data-aos-duration="2000">
+            <a href="#">
+              <span>Agende sua Experiência</span>
+            </a>
+            <svg width="15px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </button>
         </div>
-        <button class="botao-agendeseuhorario" data-aos="fade-up" data-aos-delay="600" data-aos-duration="2000">
-          <a href="#">
-            <span>Agende sua Experiência</span>
-          </a>
-          <svg width="15px" height="10px" viewBox="0 0 13 10">
-            <path d="M1,5 L11,5"></path>
-            <polyline points="8 1 12 5 8 9"></polyline>
-          </svg>
-        </button>
       </div>
-    </div>
-  </main>
-
+    </main>
+  </section>
   <!--Sobre-->
   <section id="sobre" class="sobre">
     <div class="container-sobre">
       <!--Slide Sobre-->
       <div class="headline-sobre" data-aos="fade-up" data-aos-duration="1000">
-        <div class="headline-scroll" id="headline-scroll" >
+        <div class="headline-scroll" id="headline-scroll">
           <span class="bold">SOBRE</span>
           <span class="divisor"></span>
           <span class="light">SOBRE</span>
@@ -134,60 +135,63 @@
   </section>
   <!--Fim Sobre-->
   <!--Serviços-->
- <br>
- <br>
- <br>
- <br>
- <br>
- <br>
-
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <section id="servicos">
-      <p class="servicos-titulo">Serviços</p>
+    <p class="servicos-titulo">Serviços</p>
     <ul class="servicos">
-        <li>
-            <span class="servico-nome">SOBRANCELHA</span>
-            <span class="servico-preco">R$ 5</span>
-        </li>
-        <li>
-            <span class="servico-nome">BARBA</span>
-            <span class="servico-preco">R$ 10</span>
-        </li>
-        <li>
-            <span class="servico-nome">ACABAMENTO</span>
-            <span class="servico-preco">R$ 10</span>
-        </li>
-        <li>
-            <span class="servico-nome">CORTE</span>
-            <span class="servico-preco">R$ 25</span>
-        </li>
+      <li>
+        <span class="servico-nome">SOBRANCELHA</span>
+        <span class="servico-preco">R$ 5</span>
+      </li>
+      <li>
+        <span class="servico-nome">BARBA</span>
+        <span class="servico-preco">R$ 10</span>
+      </li>
+      <li>
+        <span class="servico-nome">ACABAMENTO</span>
+        <span class="servico-preco">R$ 10</span>
+      </li>
+      <li>
+        <span class="servico-nome">CORTE</span>
+        <span class="servico-preco">R$ 25</span>
+      </li>
     </ul>
-    <button class="botao-agendeseuhorario">
-        <a href="#">
-            <span>Agende sua Experiência</span>
-        </a>
-        <svg width="15px" height="10px" viewBox="0 0 13 10">
-            <path d="M1,5 L11,5"></path>
-            <polyline points="8 1 12 5 8 9"></polyline>
-        </svg>
+    <button class="botao-servicos">
+      <a href="#">
+        <span>Agende sua Experiência</span>
+      </a>
+      <svg width="15px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
     </button>
-</section>
+  </section>
   <!--Fim Serviços-->
-  <br>
-  <br>
-  <br>
+
   <!--Localização e Contato-->
   <section id="localizacao">
     <div class="localizacao-Rua">
       <h1 class="localizacao-titulo">Endereço</h1>
       <hr class="localizacao-hr">
-      <p>Frederico Taufer, 57 - São Marcos</p>
+      <p id="localizacao-p" class="localizacao-p">São Marcos/RS</p>
+      <p id="localizacao-p" class="localizacao-p">Frederico Taufer, 57</p>
     </div>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1745.2327866898083!2d-51.06886437608482!3d-28.973571823612765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951e93b0df61e1df%3A0xdbbb455c14fa1b97!2sR.%20P%E1%B4%B1.%20Frederico%20Taufer%2C%2057%20-%20S%C3%A3o%20Marcos%2C%20RS%2C%2095190-000!5e0!3m2!1spt-BR!2sbr!4v1728109871283!5m2!1spt-BR!2sbr"
-       style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade" id="localizacao"></iframe>
+      style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      id="localizacao"></iframe>
   </section>
   <!--Fim Localização e Contato-->
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <br>
@@ -228,7 +232,7 @@
   <footer class="footer" id="footer">
     <div class="container-footer">
       <div class="footer-column logo-column">
-        <img src="img/ascaribarber_logodegrade.png" alt="">
+        <img src="img/ascaribarber_logodegrade.png" onclick="location.href='#inicio'" alt="Logo Ascari barber">
       </div>
       <div class="footer-column menu-column">
         <nav class="footer-nav">
