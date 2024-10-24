@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 backToTopButton.style.display = 'none';
                 whatsappButton.style.display = 'none';
-            }, 500);
+            }, 200);
         }
     }
 
@@ -37,6 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ação ao clicar no botão do WhatsApp
     whatsappButton.addEventListener('click', function () {
-        window.location.href = 'https://wa.me/5599999999999';
+        window.location.href = 'https://wa.me/555496984273?text=Oi,%20Gostaria%20de%20marcar%20um%20hor%C3%A1rio!';
     });
 });

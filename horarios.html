@@ -1,0 +1,372 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Ascari - Sistema de Agendamento</title>
+    <link rel="stylesheet" href="horarios.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    </head>
+    <body>
+        <header class="header">
+            <h1>Barbearia Ascari</h1>
+            <a href="#" class="admin-login" onclick="showAdminLogin()">Área do Barbeiro</a>
+        </header>
+    
+        <div class="container">
+            <!-- Login/Registro -->
+            <div id="authContainer" class="auth-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Senha</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Entrar</button>
+                </form>
+                <p style="margin-top: 1rem;">
+                    Não tem conta? <a href="#" onclick="toggleAuthForm()">Registre-se</a>
+                </p>
+            </div>
+    
+            <!-- Registro -->
+            <div id="registerContainer" class="auth-container" style="display: none;">
+                <h2>Registro</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regName">Nome Completo</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Senha</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Telefone</label>
+                        <input type="tel" id="regPhone" required>
+                    </div>
+                    <button type="submit" class="btn">Registrar</button>
+                </form>
+                <p style="margin-top: 1rem;">
+                    Já tem conta? <a href="#" onclick="toggleAuthForm()">Faça login</a>
+                </p>
+            </div>
+    
+            <!-- Sistema de Agendamento -->
+            <div id="bookingSection" class="booking-section">
+                <div class="month-selector">
+                    <select id="monthSelect">
+                        <!-- Preenchido via JavaScript -->
+                    </select>
+                    <select id="yearSelect">
+                        <!-- Preenchido via JavaScript -->
+                    </select>
+                </div>
+                
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    <div id="calendarGrid" class="calendar-grid">
+                        <!-- Preenchido via JavaScript -->
+                    </div>
+                </div>
+    
+                <div id="timeSlots" class="time-slots">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+    
+                <div id="confirmationForm" style="display: none; margin-top: 2rem;">
+                    <h3>Confirmar Agendamento</h3>
+                    <div class="form-group">
+                        <label for="serviceSelect">Serviço</label>
+                        <select id="serviceSelect">
+                            <option value="corte">Corte de Cabelo - R$ 40</option>
+                            <option value="barba">Barba - R$ 30</option>
+                            <option value="combo">Combo (Corte + Barba) - R$ 60</option>
+                        </select>
+                    </div>
+                    <button onclick="confirmAppointment()" class="btn">Confirmar Agendamento</button>
+                </div>
+            </div>
+    
+            <!-- Painel Admin -->
+            <div id="adminPanel" class="admin-panel">
+                <h2>Painel do Barbeiro</h2>
+                <div class="appointment-list">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+            </div>
+        </div>
+    
+    <script>
+    const DateTime = luxon.DateTime;
+    let currentUser = null;
+    let selectedDate = null;
+    let selectedTime = null;
+    
+    // Simulação de banco de dados
+    let users = [];
+    let appointments = [];
+    const adminCredentials = {
+        username: 'Ascaribarber123',
+        password: 'barberadmin'
+    };
+    
+    function initializeApp() {
+        populateMonthYearSelectors();
+        generateCalendar();
+        
+        document.getElementById('monthSelect').addEventListener('change', generateCalendar);
+        document.getElementById('yearSelect').addEventListener('change', generateCalendar);
+    }
+    
+    function populateMonthYearSelectors() {
+        const monthSelect = document.getElementById('monthSelect');
+        const yearSelect = document.getElementById('yearSelect');
+        
+        const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        
+        months.forEach((month, index) => {
+            const option = document.createElement('option');
+            option.value = index + 1;
+            option.text = month;
+            monthSelect.appendChild(option);
+        });
+    
+        const currentYear = DateTime.now().year;
+        for (let year = currentYear; year <= currentYear + 1; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.text = year;
+            yearSelect.appendChild(option);
+        }
+    
+        monthSelect.value = DateTime.now().month;
+        yearSelect.value = currentYear;
+    }
+    
+    function generateCalendar() {
+        const month = parseInt(document.getElementById('monthSelect').value);
+        const year = parseInt(document.getElementById('yearSelect').value);
+        
+        const firstDay = DateTime.local(year, month, 1);
+        const daysInMonth = firstDay.daysInMonth;
+        const startWeekday = firstDay.weekday % 7;
+    
+        const calendarGrid = document.getElementById('calendarGrid');
+        calendarGrid.innerHTML = '';
+    
+        // Dias vazios antes do primeiro dia
+        for (let i = 0; i < startWeekday; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'calendar-day disabled';
+            calendarGrid.appendChild(emptyDay);
+        }
+    
+        // Dias do mês
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+    
+            const date = DateTime.local(year, month, day);
+            
+            // Desabilitar dias passados e domingos
+            if (date < DateTime.now().startOf('day') || date.weekday === 7) {
+                dayElement.classList.add('disabled');
+            } else {
+                dayElement.addEventListener('click', () => selectDate(date));
+            }
+    
+            calendarGrid.appendChild(dayElement);
+        }
+    }
+    
+    function selectDate(date) {
+        selectedDate = date;
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.classList.remove('selected');
+        });
+        event.target.classList.add('selected');
+        generateTimeSlots();
+    }
+    
+    function generateTimeSlots() {
+        const timeSlots = document.getElementById('timeSlots');
+        timeSlots.innerHTML = '';
+        
+        // Horários de 9h às 19h
+        for (let hour = 9; hour < 19; hour++) {
+            for (let minute of ['00', '30']) {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = `${hour}:${minute}`;
+                
+                // Verificar se o horário já está agendado
+                const isBooked = appointments.some(apt => 
+                    apt.date === selectedDate.toISODate() && 
+                    apt.time === `${hour}:${minute}`
+                );
+                
+                if (isBooked) {
+                    timeSlot.classList.add('booked');
+                } else {
+                    timeSlot.addEventListener('click', () => selectTime(`${hour}:${minute}`));
+                }
+                
+                timeSlots.appendChild(timeSlot);
+            }
+        }
+        
+        document.getElementById('confirmationForm').style.display = 'block';
+    }
+    
+    function selectTime(time) {
+        selectedTime = time;
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.classList.remove('selected');
+        });
+        event.target.classList.add('selected');
+    }
+    
+    function toggleAuthForm() {
+        const authContainer = document.getElementById('authContainer');
+        const registerContainer = document.getElementById('registerContainer');
+        
+        if (authContainer.style.display === 'none') {
+            authContainer.style.display = 'block';
+            registerContainer.style.display = 'none';
+        } else {
+            authContainer.style.display = 'none';
+            registerContainer.style.display = 'block';
+        }
+    }
+    
+    function showAdminLogin() {
+        const username = prompt('Usuário:');
+        const password = prompt('Senha:');
+        
+        if (username === adminCredentials.username && password === adminCredentials.password) {
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('bookingSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            loadAdminPanel();
+        } else {
+            alert('Credenciais inválidas!');
+        }
+    }
+    
+    function loadAdminPanel() {
+        const appointmentList = document.querySelector('.appointment-list');
+        appointmentList.innerHTML = '';
+        
+        appointments.forEach(apt => {
+            const aptElement = document.createElement('div');
+            aptElement.className = 'appointment-item';
+            aptElement.innerHTML = `
+                <p><strong>Cliente:</strong> ${apt.userName}</p>
+                <p><strong>Data:</strong> ${apt.date}</p>
+                <p><strong>Hora:</strong> ${apt.time}</p>
+                <p><strong>Serviço:</strong> ${apt.service}</p>
+                <button onclick="cancelAppointment('${apt.id}')" class="btn">Cancelar</button>
+            `;
+            appointmentList.appendChild(aptElement);
+        });
+    }
+    
+    function cancelAppointment(appointmentId) {
+        appointments = appointments.filter(apt => apt.id !== appointmentId);
+        loadAdminPanel();
+        // Aqui você adicionaria a lógica para enviar email de cancelamento ao cliente
+    }
+    
+    function confirmAppointment() {
+        if (!selectedDate || !selectedTime) {
+            alert('Por favor, selecione uma data e horário.');
+            return;
+        }
+    
+        const appointment = {
+            id: Date.now().toString(),
+            userId: currentUser.id,
+            userName: currentUser.name,
+            date: selectedDate.toISODate(),
+            time: selectedTime,
+            service: document.getElementById('serviceSelect').value
+        };
+    
+        appointments.push(appointment);
+    
+        // Simulação de envio de email
+        const emailContent = `
+            Olá ${currentUser.name}!
+    
+            Seu agendamento foi confirmado:
+            Data: ${selectedDate.toFormat('dd/MM/yyyy')}
+            Hora: ${selectedTime}
+            Serviço: ${appointment.service}
+    
+            Aguardamos você!
+            Barbearia Ascari
+        `;
+    
+        console.log('Email enviado:', emailContent);
+        alert('Agendamento confirmado! Um email de confirmação foi enviado.');
+    
+        selectedDate = null;
+        selectedTime = null;
+        generateCalendar();
+    }
+    
+    // Event Listeners
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        
+        const user = users.find(u => u.email === email && u.password === password);
+        if (user) {
+            currentUser = user;
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('bookingSection').style.display = 'block';
+        } else {
+            alert('Email ou senha inválidos!');
+        }
+    });
+    
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = {
+            id: Date.now().toString(),
+            name: document.getElementById('regName').value,
+            email: document.getElementById('regEmail').value,
+            password: document.getElementById('regPassword').value,
+            phone: document.getElementById('regPhone').value
+        };
+        
+        users.push(user);
+        alert('Registro realizado com sucesso! Faça login para continuar.');
+        toggleAuthForm();
+    });
+    
+    // Inicializar aplicação
+    initializeApp();
+    </script>
+    </body></html>

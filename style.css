@@ -1,7 +1,8 @@
 /******************** Fontes usadas */
-@import url('naoseieditar.css');
+@import url('animate.css');
 @import url('https://fonts.cdnfonts.com/css/tt-hoves-pro-trial');
 @import url('clash-grotesk.css');
+@import url('media.css');
 
 
 * {
@@ -15,16 +16,16 @@
 :root {
     --font-grande: 'TT Hoves Pro Trial', sans-serif;
     --font-pequena: 'ClashGrotesk-Light', sans-serif;
-    --cor-principal: #520305;
+    --cor-principal: #330109;
     --color-gray1: #3d4143;
     --color-gray2: #9c9d9d;
     --color-white: #f6f6f6;
     --color-destaque: #D9C6B0;
-    --cor-degrade:
+    --cor-contorno: #858585;
 }
 
 body {
-    background-color: #330109;
+    background-color: var(--cor-principal);
     width: 100vw;
     display: block;
     font-family: var(--font-pequena);
@@ -70,7 +71,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #3d4143;
+    color: var(--color-gray1);
 }
 
 .botao-agendeseuhorario a {
@@ -89,6 +90,7 @@ body {
     font-weight: 700;
     color: var(--color-gray1);
     border-radius: 20px;
+    left: 5px;
 }
 
 .botao-agendeseuhorario:before {
@@ -221,7 +223,7 @@ body {
     text-align: center;
     font-size: 6rem;
     letter-spacing: 0.05rem;
-    text-shadow: 1px 1px 10px #434343;
+    text-shadow: 1px 1px 10px #858585;
 }
 
 .paragrafo-inicio {
@@ -282,6 +284,7 @@ body {
     white-space: nowrap;
     animation: scroll 20s linear infinite;
     width: 2000px;
+    margin-top: 15px;
 }
 
 @keyframes scroll {
@@ -331,7 +334,7 @@ body {
 .left-sobre {
     color: var(--color-white);
     height: 100%;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -339,12 +342,12 @@ body {
     gap: 3rem;
 }
 
-.textos-sobre h1 {
+.titulo-sobre h1 {
     font-size: 3rem;
     font-family: var(--font-grande);
 }
 
-.textos-sobre p {
+.textos-sobre-p {
     font-size: 1.5rem;
     color: var(--color-gray2);
     font-weight: 500;
@@ -374,7 +377,7 @@ body {
 
 .right-sobre {
     height: 100%;
-    width: 50%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -396,7 +399,7 @@ body {
 
 .complemento-sobre img {
     position: relative;
-    left: 20%;
+    left: 22%;
     top: 1%;
     width: 75%;
     z-index: 1000;
@@ -405,7 +408,7 @@ body {
 
 .complemento-sobre-navalha img {
     position: relative;
-    left: 25%;
+    left: 16%;
     top: 100%;
     width: 60%;
     z-index: -1000;
@@ -432,19 +435,18 @@ body {
     text-align: center;
     font-family: var(--font-grande);
     font-weight: lighter;
-    font-size: 5rem;
+    font-size: 5.5rem;
     ;
     border-bottom: 1px solid var(--color-destaque);
     margin-bottom: 20px;
-    text-shadow: 1px 1px 10px #4343439d;
-    ;
-
+    text-shadow: 1px 1px 10px #858585;
+    color: var(--color-gray1);
 }
 
 #servicos {
     max-width: 800px;
     margin: 180px auto;
-    padding: 20px;
+    padding: 30px;
     background-color: var(--color-gray2);
     box-shadow: rgb(0 0 0 / 70%) 0px 0px 10px 0px;
     border-radius: 20px;
@@ -480,8 +482,8 @@ body {
 
 .botao-servicos {
     position: relative;
-    margin: auto;
-    padding: 12px 18px;
+    margin: 0 auto;
+    padding: 18px 18px;
     transition: all 0.2s ease;
     border: none;
     background: none;
@@ -491,18 +493,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #3d4143;
+    color: var(--color-gray1);
     background-color: var(--color-destaque);
     height: 120%;
 }
 
-.botao-servicos a {
-    text-decoration: none;
-    color: #3d4143;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+.botao-servicos-texto {
+    font-family: var(--font-pequena);
+    font-weight: bolder;
+    font-size: 19px;
 }
 
 /*localização*/
@@ -510,7 +509,7 @@ body {
     width: 100%;
     height: 550px;
     margin: 0 auto;
-    text-shadow: 1px 1px 10px #4343437e;
+    text-shadow: 1px 1px 10px #858585;
     background-color: var(--color-destaque);
 }
 
@@ -635,7 +634,7 @@ input#nome {
     letter-spacing: 0.05rem;
     margin-top: 5rem;
     color: var(--color-gray2);
-
+    text-shadow: 1px 1px 10px #858585;
 }
 
 .contato-hr {
