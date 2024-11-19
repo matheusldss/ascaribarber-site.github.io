@@ -1,337 +1,327 @@
 @import url(style.css);
+@import url(animate.css);
 /* Responsividade para celulares pequenos (até 360px) */
 @media (max-width: 360px) {
-    .html,body {
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-        scroll-snap-type: proximity;
-    }
 
-    .header {
-        width: 100%;
-        padding: 5% 34%;
-    }
+  html,
+  body {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
+    /* Disable scroll snapping */
+  }
 
-    .logo img {
-        position: absolute;
-        top: 30px;
-        left: 10px;
-        width: 45%;
-    }
+  /* Remove scroll snapping from sections */
+  section,
+  section#servicos,
+  section#localizacao,
+  section#contato {
+    scroll-snap-align: none;
+  }
 
-    .inicio {
-        width: 100%;
-        height: 100%;
-        padding: 0rem 0rem;
-        z-index: 1;
-        user-select: none;
-    }
+  /* Adjust header styles */
+  .header {
+    width: 100%;
+    padding: 20px;
+    /* Use relative units for padding */
+  }
 
-    .container-inicio {
-        width: 100%;
-        height: 100%;
-        color: var(--color-white);
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-    }
+  .logo img {
+    position: static;
+    /* Remove absolute positioning */
+    width: 80%;
+    /* Adjust logo size using percentage */
+    margin: 0 auto;
+    /* Center the logo */
+  }
 
-    .destaque-inicio {
-        font-family: var(--font-grande);
-        font-weight: lighter;
-        text-align: center;
-        font-size: 2.8rem;
-        letter-spacing: 0.05rem;
-        text-shadow: 1px 1px 10px #858585;
-        padding: 15% 15% 0%;
-        margin: 18% auto 0 auto;
-    }
+  .hamburger {
+    margin-top: 10px;
+    /* Adjust margin using relative units */
+  }
 
-    .paragrafo-inicio p {
-        font-size: 1.2rem;
-        color: var(--color-gray2);
-        text-align: justify;
-        margin: 0 auto;
-        max-width: 80%;
-    }
+  /* Adjust hero section styles */
+  .inicio {
+    padding: 50px 20px;
+    /* Use relative units for padding */
+  }
 
-    .botao-agendeseuhorario {
-        position: relative;
-        margin: 0 auto 15% auto;
-        padding: 6px 9px;
-        transition: all 0.2s ease;
-        border: none;
-        background: none;
-        cursor: pointer;
-        border-radius: 20px;
-        width: 250px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--color-gray1);
-    }
+  .destaque-inicio {
+    font-size: 2.5rem;
+    /* Adjust font size using relative units */
+    padding: 10px;
+    /* Use relative units for padding */
+    margin: 20px auto;
+    /* Use relative units for margin */
+  }
 
-    .botao-agendeseuhorario a {
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
+  .paragrafo-inicio p {
+    font-size: 1rem;
+    /* Adjust font size using relative units */
+    margin: 10px auto;
+    /* Use relative units for margin */
+    text-align: center;
+    /* Center the text */
+  }
 
-    .botao-agendeseuhorario span {
-        position: relative;
-        font-family: var(--font-pequena);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--color-gray1);
-        border-radius: 20px;
-        left: 0.4rem;
-        bottom: 0.1rem;
-    }
+  .botao-agendeseuhorario {
+    width: 90%;
+    /* Make button almost full width */
+    margin: 20px auto;
+    /* Use relative units for margin */
+  }
 
-    .botao-agendeseuhorario:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 20px;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        border-radius: 50px;
-        background: var(--color-destaque);
-        width: 80%;
-        height: 80%;
-        transition: all 0.3s ease;
-    }
+  /* Adjust "Sobre" section styles */
+  .sobre {
+    width: 100%;
+    /* Make section full width */
+    padding: 50px 20px;
+    /* Use relative units for padding */
+  }
 
-    .botao-agendeseuhorario:hover:before {
-        width: 80%;
-        background: var(--color-destaque);
-    }
+  .headline-sobre {
+    position: static;
+    /* Remove absolute positioning */
+    margin-bottom: 20px;
+    /* Add margin below the headline */
+  }
 
-    .botao-agendeseuhorario:active {
-        transform: scale(0.95);
-    }
+  .headline-scroll {
+    width: auto;
+    /* Let the headline scroll naturally */
+  }
 
-    .botao-agendeseuhorario svg {
-        position: relative;
-        top: 1px;
-        margin-left: 10px;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke: var(--color-destaque);
-        stroke-width: 2;
-        transform: translateX(-5px);
-        transition: all 0.3s ease;
-    }
+  .headline-scroll span {
+    font-size: 2rem;
+    /* Adjust font size using relative units */
+  }
 
-    .botao-agendeseuhorario:hover svg {
-        transform: translateX(0);
-        stroke: var(--color-gray1);
-    }
+  .conteudo-sobre {
+    flex-direction: column;
+    /* Stack content vertically */
+  }
 
-    /*FIM DA PRIMEIRA PARTE DA PÁGINA*/
-    .sobre {
-        background-color: var(--color-destaque);
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0rem 1rem;
-        z-index: 1;
-        overflow: visible;
-        margin-bottom: 15px;
-    }
+  .left-sobre,
+  .right-sobre {
+    width: 100%;
+    /* Make content full width */
+    position: static;
+    /* Remove absolute positioning */
+  }
 
-    .container-sobre {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .titulo-sobre h1 {
+    text-align: center;
+    /* Center the title */
+    margin-bottom: 10px;
+    /* Add margin below the title */
+  }
 
-    .headline-sobre {
-        height: 20%;
-        width: 100vw;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-    }
+  .textos-sobre-p {
+    text-align: center;
+    /* Center the text */
+    margin-bottom: 20px;
+    /* Add margin below the text */
+  }
 
-    .headline-scroll {
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        animation: scroll 20s linear infinite;
-        width: 2000px;
-        margin-top: 0;
-    }
+  .imagem-sobre img {
+    width: 80%;
+    /* Adjust image size using percentage */
+    margin: 0 auto;
+    /* Center the image */
+  }
 
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(-50%);
-        }
-    }
-
-    .headline-scroll span {
-        font-family: var(--font-grande);
-        font-size: 4rem;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-    }
-
-    .headline-scroll .divisor {
-        width: 15px;
-        height: 15px;
-        background-color: var(--color-gray1);
-        border-radius: 50%;
-        margin: 0 20px;
-    }
-
-    .conteudo-sobre {
-        position: relative;
-        top: 30%;
-        width: 100%;
-        height: 100%;
-        display: flex;
-    }
-
-    .left-sobre {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-    }
-
-    .titulo-sobre h1 {
-        font-size: 2rem;
-        font-family: var(--font-grande);
-        margin-top: 0%;
-        position: absolute;
-        top: -14%;
-        left: 0%;
-    }
-
-    .textos-sobre-p {
-        font-size: 1rem;
-        color: var(--color-gray1);
-        font-weight: 500;
-        line-height: 1.4;
-        letter-spacing: 1.5px;
-        position: absolute;
-        top: 50%;
-    }
-
-    .redes-sociais {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        margin-top: 50%;
-    }
-
-    .redes-sociais a {
-        display: flex;
-        justify-content: space-between;
-        text-decoration: none;
-        color: var(--color-gray1);
-        font-size: 1rem;
-        width: 100%;
-        padding-bottom: 5px;
-        border-bottom: 1px solid var(--color-gray1);
-        margin-bottom: 15%;
-    }
-
-    .right-sobre {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .imagem-sobre {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-    }
-
-    .imagem-sobre img {
-        margin-bottom: 160%;
-        width: 150%;
-        z-index: 99;
-        position: relative;
-        left: 15%;
-    }
-
-    .complemento-sobre {
-        width: auto;
-        z-index: 0;
-    }
-
-    .complemento-sobre img {
-        position: absolute;
-        left: 8%;
-        top: 12%;
-        width: 50%;
-        z-index: 1000;
-        animation: rotate 20s linear infinite;
-    }
-
-    .complemento-sobre-navalha {
-        position: relative;
-        left: 10%;
-        top: 100%;
-        width: 60%;
-        z-index: -1000;
-        animation: rotate 20s linear infinite;
-    }
-
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-
+  /* Hide or adjust other elements as needed */
+  .complemento-sobre img,
+  .complemento-sobre-navalha {
+    display: none;
+  }
 }
 
 
 
 /* Responsividade para celulares médios (até 768px) */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  @media (max-width: 768px) {
+
+    /* Reset global styles for smaller screens */
+    html,
+    body {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: none;
+      max-height: 100%;
+      /* Disable scroll snapping */
+    }
+
+    /* Remove scroll snapping from sections */
+    section,
+    section#servicos,
+    section#localizacao,
+    section#contato {
+      scroll-snap-align: none;
+    }
+
+    /* Adjust header styles */
+    header.header {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 2%;
+    }
+
+    .logo img {
+      position: static;
+      /* Remove absolute positioning */
+      width: 80%;
+      /* Adjust logo size using percentage */
+      margin: 0 auto;
+      /* Center the logo */
+    }
+
+    .hamburger {
+      margin-top: 10px;
+      /* Adjust margin using relative units */
+    }
+
+    /* Adjust hero section styles */
+    .inicio {
+      padding: 50px 20px;
+      /* Use relative units for padding */
+    }
+
+    .destaque-inicio {
+      font-size: 2.5rem;
+      /* Adjust font size using relative units */
+      padding: 10px;
+      /* Use relative units for padding */
+      margin: 20px auto;
+      /* Use relative units for margin */
+    }
+
+    .paragrafo-inicio p {
+      font-size: 1rem;
+      /* Adjust font size using relative units */
+      margin: 10px auto;
+      /* Use relative units for margin */
+      text-align: center;
+      /* Center the text */
+    }
+
+    .botao-agendeseuhorario {
+      width: 90%;
+      /* Make button almost full width */
+      margin: 20px auto;
+      /* Use relative units for margin */
+    }
+
+    .botao-agendeseuhorario:before {
+      width: 90%;
+    }
+
+    /* Adjust "Sobre" section styles */
+    .sobre {
+      width: 100%;
+      /* Make section full width */
+      padding: 50px 20px;
+      /* Use relative units for padding */
+    }
+
+    .headline-sobre {
+      position: absolute;
+      /* Remove absolute positioning */
+      margin-bottom: 20px;
+      /* Add margin below the headline */
+      top: 0%;
+      height: 26%;
+    }
+
+    .headline-scroll {
+      width: auto;
+      /* Let the headline scroll naturally */
+    }
+
+    .headline-scroll span {
+      font-size: 2.1rem;
+      /* Adjust font size using relative units */
+    }
+
+    .conteudo-sobre {
+      flex-direction: column;
+      /* Stack content vertically */
+    }
+
+    .left-sobre,
+    .right-sobre {
+      width: 100%;
+      /* Make content full width */
+      position: static;
+      /* Remove absolute positioning */
+    }
+
+    .titulo-sobre h1 {
+      text-align: center;
+      /* Center the title */
+      margin-bottom: 35%;
+      /* Add margin below the title */
+    }
+
+    .textos-sobre-p {
+      text-align: center;
+      /* Center the text */
+      margin-bottom: 35%;
+      /* Add margin below the text */
+    }
+
+    .redes-sociais a {
+      font-size: 1.5rem;
+      padding-bottom: 5px;
+      position: absolute;
+      top: 110%;
+      bottom: 0%;
+      align-items: flex-end;
+    }
+
+    .imagem-sobre img {
+      width: 80%;
+      /* Adjust image size using percentage */
+      margin: 0 0 180% 0;
+      /* Center the image */
+    }
+
+    /* Hide or adjust other elements as needed */
+    .complemento-sobre img,
+    .complemento-sobre-navalha {
+      display: none;
+    }
+  }
+  #formulario{
+    width: 100%;
+  }
+  .logo-column img{
+    width: 200%;
+    margin-left: 0%;
+    margin-right: 20%;
+    margin-top: 50%;
+    rotate: 270deg;
+  }
+}
+
 
 /* Responsividade para tablets e pequenas telas de notebooks (até 1024px) */
 @media (max-width: 1024px) {
-    body {
-        transform: scale(0.75); /* Escala para 75% */
-        transform-origin: top left; /* Mantém a origem do scale no topo esquerdo */
-    }
+  body {
+    transform: scale(0.75);
+    /* Escala para 75% */
+    transform-origin: top left;
+    /* Mantém a origem do scale no topo esquerdo */
+  }
 
 }
-
-/* Responsividade para notebooks e desktops grandes (a partir de 1024px) */
-@media (min-width: 1024px) {}
