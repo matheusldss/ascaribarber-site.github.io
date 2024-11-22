@@ -153,12 +153,16 @@
     /* Reset global styles for smaller screens */
     html,
     body {
-      width: 100%;
+      transform-origin: top left;
+      transform: scale(1);
+      width: 134vw;
       height: auto;
       overflow-x: hidden;
       scroll-behavior: smooth;
       scroll-snap-type: none;
       max-height: 100%;
+      min-height: 100vh;
+
       /* Disable scroll snapping */
     }
 
@@ -180,7 +184,7 @@
     .logo img {
       position: static;
       /* Remove absolute positioning */
-      width: 80%;
+      width: 50%;
       /* Adjust logo size using percentage */
       margin: 0 auto;
       /* Center the logo */
@@ -198,7 +202,7 @@
     }
 
     .destaque-inicio {
-      font-size: 2.5rem;
+      font-size: 5.5rem;
       /* Adjust font size using relative units */
       padding: 10px;
       /* Use relative units for padding */
@@ -207,7 +211,7 @@
     }
 
     .paragrafo-inicio p {
-      font-size: 1rem;
+      font-size: 2.5rem;
       /* Adjust font size using relative units */
       margin: 10px auto;
       /* Use relative units for margin */
@@ -226,26 +230,27 @@
       width: 90%;
     }
 
+    .botao-agendeseuhorario span {
+      font-size: 1.7rem;
+    }
+
     /* Adjust "Sobre" section styles */
     .sobre {
       width: 100%;
       /* Make section full width */
-      padding: 50px 20px;
-      /* Use relative units for padding */
     }
 
-    .headline-sobre {
-      position: absolute;
-      /* Remove absolute positioning */
-      margin-bottom: 20px;
-      /* Add margin below the headline */
-      top: 0%;
-      height: 26%;
-    }
+    .headline-sobre {}
 
     .headline-scroll {
       width: auto;
-      /* Let the headline scroll naturally */
+      margin-bottom: 200%;
+    }
+
+    .headline-scroll .light {
+      font-weight: lighter;
+      color: var(--color-gray2);
+      font-size: 3rem;
     }
 
     .headline-scroll span {
@@ -269,7 +274,7 @@
     .titulo-sobre h1 {
       text-align: center;
       /* Center the title */
-      margin-bottom: 35%;
+      margin-bottom: 50%;
       /* Add margin below the title */
     }
 
@@ -281,10 +286,10 @@
     }
 
     .redes-sociais a {
-      font-size: 1.5rem;
+      font-size: 2rem;
       padding-bottom: 5px;
       position: absolute;
-      top: 110%;
+      top: 10%;
       bottom: 0%;
       align-items: flex-end;
     }
@@ -302,15 +307,32 @@
       display: none;
     }
   }
-  #formulario{
+
+  #formulario {
     width: 100%;
   }
-  .logo-column img{
-    width: 200%;
-    margin-left: 0%;
+
+  .social-links a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+
+  .footer-nav a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 2rem;
+    transition: color 0.3s ease;
+  }
+
+  .logo-column img {
+    width: 100%;
+    margin-left: 30%;
     margin-right: 20%;
-    margin-top: 50%;
-    rotate: 270deg;
+    margin-top: 10%;
   }
 }
 
